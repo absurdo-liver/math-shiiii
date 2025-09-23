@@ -31,7 +31,7 @@ function check(a, max, delay, fullLog){
       } else {
         i++;
         ans = Math.round(ans*1000) / 1000;
-        log('\n~' + ans + '/' + i + ' != integer', fullLog);
+        log('\n' + ans + '/' + i + ' != integer', fullLog);
       }
     } else {
       infoOut.textContent = 'couldnt find answer for check(' + a + ', ' + max + ', ' + delay + ')';
@@ -48,7 +48,7 @@ function log(log, fullLog){
   }
 }
 var n = Math.round((Math.random()*Math.round(Math.random()*100)+1)*10000)/10000;
-check(n, 2**16, 10, false);
+check(n, 2**13, 10, false);
 
 function reload(){
   setTimeout(() => {
