@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+  padding: 25px;
+}
+
+textarea {
+  field-sizing: content;
+}
+    </style>
+  </head>
+  <body>
+      <textarea id='output'></textarea>
+      <br>
+      <textarea id="infoOut"></textarea>
+      <script defer>
+      const output = document.getElementById('output');
+const infoOut = document.getElementById('infoOut');
+function check(a, max, delay, fullLog){
+  infoOut.textContent = '\n' + 'trying check( ' + a + ', ' + max + ', ' + delay + ' )';
+  let i = 2;
+  let int = setInterval(() => {
+    if(i < max){
+      let ans = a*i;
+      if(Number.isInteger(ans)){
+        log( ans + '/' + i + ' = ' + a);
+        infoOut.textContent = 'found answer for check(' + a + ', ' + max + ', ' + delay + ')';
+        stopInterval(int);
+      } else {
+        i++;
+        ans = Math.round(ans*1000) / 1000;
+        log('\n~' + ans + '/' + i + ' != integer', fullLog);
+      }
+    } else {
+      infoOut.textContent = 'couldnt find answer for check(' + a + ', ' + max + ', ' + delay + ')';
+      reload();
+      clearInterval(int);
+    }
+  }, delay);
+}
+function log(log, fullLog){
+  if(!fullLog){
+    output.textContent = log;
+  } else {
+    output.textContent = log + output.textContent;
+  }
+}
+var n = Math.round((Math.random()*Math.round(Math.random()*100)+1)*10000)/10000;
+check(n, 2**16, 10, false);
+
+function reload(){
+  setTimeout(() => {
+    window.location.reload();
+  }, 250);
+}
+    </script>
+  </body>
+</html>
