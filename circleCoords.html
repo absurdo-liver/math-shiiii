@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+body{
+  padding: 25px;
+  text-align: center;
+  white-space: pre-line;
+}
+
+textarea{
+  field-sizing: content;
+  min-width: 50vw;
+}
+    </style>
+  </head>
+  <body>
+    <input id="iterationAmountIn" type="number" placeholder="iterations ammount:">
+    <input id="roundingIn" type="number" placeholder="rounding Multiplier">
+    <input id="msSpeedIn" type="number" placeholder="iterations speed (ms)">
+    <button onclick="interateDo(1)">iteration array</button>
+    <button onclick="interateDo(2)">instant array</button>
+    <textarea  id='output'></textarea>
+    <script>
+const output = document.getElementById('output');
+const iterationAmountIn = document.getElementById('iterationAmountIn');
+const roundingIn = document.getElementById('roundingIn');
+const msSpeedIn = document.getElementById('msSpeedIn');
+const pi = Math.PI;
+
+var instantArray = [];
+
+function interateDo(n){
+  instantArray = [];
+  output.textContent = '\n';
+  let t = iterationAmountIn.value;
+  let rounding = roundingIn.value;
+  let ms = msSpeedIn.value;
+  if(!Number.isInteger(t)){t = Math.round(t); iterationAmountIn.value = t;}
+  if(!Number.isInteger(rounding)){rounding = Math.round(rounding); roundingIn.value = rounding;}
+  if(!Number.isInteger(ms)){ms = Math.round(ms); msSpeedIn.value = ms;}
+  if(t < 2){t = 2; iterationAmountIn.value = t;}
+  if(rounding < 1){rounding = 1; roundingIn.value = rounding;}
+  if(ms < 10){ms = 10; msSpeedIn.value = ms;}
+  if(ms > 10000){ms = 10000; msSpeedIn.value = ms;}
+  if (n === 1){iterate(t, rounding, ms);} else {instant(t, rounding, ms);}
+}
+
+function iterate(t, rounding, ms){
+  output.textContent = '';
+  var m = 1;
+  let int = setInterval(() => {
+    if(m <= t){
+      let x = Math.round(Math.cos((m*((2*pi)/t)))*rounding) / rounding;
+      let y = Math.round(Math.sin((m*((2*pi)/t)))*rounding) / rounding;
+      output.textContent += `(${x}, ${y})`;
+      localStorage.setItem('outContent', output.textContent);
+      m++;
+    } else { clearInterval(int);}
+  }, ms);
+}
+
+function instant(t, rounding, ms){
+  output.textContent = '';
+  var m = 1;
+  let int = setInterval(() => {
+    if(m <= t){
+      let x = Math.round(Math.cos((m*((2*pi)/t)))*rounding) / rounding;
+      let y = Math.round(Math.sin((m*((2*pi)/t)))*rounding) / rounding;
+      instantArray.push(`(${x}, ${y})`);
+      m++;
+    } else {
+      clearInterval(int);
+      output.textContent = instantArray.join(',');
+    }
+  }, ms);
+}
+
+iterationAmountIn.addEventListener('input', () => {
+  let content = iterationAmountIn.value;
+  localStorage.setItem('iterAmIn', content);
+});
+roundingIn.addEventListener('input', () => {
+  let content = roundingIn.value;
+  localStorage.setItem('rndIn', content);
+});
+msSpeedIn.addEventListener('input', () => {
+  let content = msSpeedIn.value;
+  localStorage.setItem('spdIn', content);
+});
+
+
+function loadLocalStorage(){
+  iterationAmountIn.value = localStorage.getItem('iterAmIn');
+  roundingIn.value = localStorage.getItem('rndIn');
+  msSpeedIn.value = localStorage.getItem('spdIn');
+  output.textContent = localStorage.getItem('outContent');
+}
+
+window.addEventListener('load', () => {
+  output.textContent = '\n';
+  loadLocalStorage();
+});
+    </script>
+  </body>
+</html>
