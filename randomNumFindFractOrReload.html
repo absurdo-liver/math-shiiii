@@ -18,10 +18,11 @@ textarea {
       <script defer>
       const output = document.getElementById('output');
 const infoOut = document.getElementById('infoOut');
+        var int;
 function check(a, max, delay, fullLog){
   infoOut.textContent = '\n' + 'trying check( ' + a + ', ' + max + ', ' + delay + ' )';
   let i = 2;
-  let int = setInterval(() => {
+  int = setInterval(() => {
     if(i < max){
       let ans = a*i;
       if(Number.isInteger(ans)){
