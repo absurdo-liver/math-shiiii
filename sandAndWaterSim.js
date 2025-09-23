@@ -139,4 +139,51 @@ initScene();
 console.log("Welcome to the console falling sand simulation!");
 console.log("Type `start()` to begin the simulation.");
 console.log("To add elements, use `sand()` or `water()` to select, then `place(x, y)`.");
-console.log("Other commands: `reset()`.");
+console.log("Other commands: `reset()`, `draw(xStart,xEnd,StartRow` <= only does 10 rows .");
+
+
+function draw(a,b,c){
+var output = '';
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+c++;
+for(let i = a; i < b; i++){
+  output += `place(${i},${c});`;
+}
+
+console.log(output);
+
+}
