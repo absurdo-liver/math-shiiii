@@ -28,7 +28,7 @@ function check(a, max, delay, fullLog){
       if(Number.isInteger(ans)){
         log( ans + '/' + i + ' = ' + a);
         infoOut.textContent = 'found answer for check(' + a + ', ' + max + ', ' + delay + ')';
-        stopInterval(int);
+        clearInterval(int);
       } else {
         i++;
         ans = Math.round(ans*1000) / 1000;
