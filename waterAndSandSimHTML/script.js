@@ -5,6 +5,8 @@ let loopId = null;
 let paintType = "o"; // sand by default
 const outputField = document.getElementById('outputField');
 const inputField = document.getElementById('inputField');
+const rangeSpeed = document.getElementById('rangeSpeed');
+var speed = 80;
 
 // Set console dimensions. You can adjust these values.
 const CONSOLE_WIDTH = 80;
@@ -136,7 +138,7 @@ function loop() {
     if (!running) return;
     scene = updateScene(scene, width, height);
     drawScene(scene);
-    loopId = setTimeout(loop, 80);
+    loopId = setTimeout(loop, speed);
 }
 
 function start() {
@@ -165,6 +167,7 @@ function reset() {
 function initScene() {
     width = CONSOLE_WIDTH;
     height = CONSOLE_HEIGHT;
+    rangeSpeed.value = speed;
     scene = createScene(width, height);
     drawScene(scene);
 }
@@ -260,6 +263,9 @@ function handleInput(event) {
 
 inputField.removeEventListener('keypress', handleInput);
 inputField.addEventListener('keydown', handleInput);
+rangeSpeed.addEventListener('input', () => {
+  speed = rangeSpeed.value;
+});
 
 initScene();
 addOutput("Welcome to the console falling sand simulation!");
