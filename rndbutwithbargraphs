@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            padding: 25px;
+            white-space: pre-line;
+        }
+
+        textarea {
+            field-sizing: content;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="output1"></textarea>
+    <textarea id="output2"></textarea>
+    <textarea id="output3"></textarea>
+    <textarea id="output4"></textarea>
+    <textarea id="output5"></textarea>
+    <textarea id="output6"></textarea>
+    <br>
+    <input type="range" id='rangeInput1' min="0" max="100" value="0">
+    <input type="range" id='rangeInput2' min="0" max="100" value="0">
+    <input type="range" id='rangeInput3' min="0" max="100" value="0">
+    <input type="range" id='rangeInput4' min="0" max="100" value="0">
+    <input type="range" id='rangeInput5' min="0" max="100" value="0">
+    <input type="range" id='rangeInput6' min="0" max="100" value="0">
+    <script defer>
+        const rangeInput1 = document.getElementById("rangeInput1");
+        const rangeInput2 = document.getElementById("rangeInput2");
+        const rangeInput3 = document.getElementById("rangeInput3");
+        const rangeInput4 = document.getElementById("rangeInput4");
+        const rangeInput5 = document.getElementById("rangeInput5");
+        const rangeInput6 = document.getElementById("rangeInput6");
+        const output1 = document.getElementById("output1");
+        const output2 = document.getElementById("output2");
+        const output3 = document.getElementById("output3");
+        const output4 = document.getElementById("output4");
+        const output5 = document.getElementById("output5");
+        const output6 = document.getElementById("output6");
+        const output = document.getElementById("output");
+
+
+        var list1 = [];
+        var list2 = [];
+        var list3 = [];
+        var list4 = [];
+        var list5 = [];
+        var list6 = [];
+
+        function random() {
+            let max1 = Math.round(Math.random() * 100);
+            let max2 = Math.round(Math.random() * 100);
+            let max3 = Math.round(Math.random() * 100);
+            let max4 = Math.round(Math.random() * 100);
+            let max5 = Math.round(Math.random() * 100);
+            let max6 = Math.round(Math.random() * 100);
+            for (let i = 1; i <= max1; i++) {
+                list1.push('.');
+                output1.textContent = list1.join('');
+                rangeInput1.value = max1;
+            }
+            for (let i = 1; i <= max2; i++) {
+                list2.push('.');
+                output2.textContent = list2.join('');
+                rangeInput2.value = max2;
+            }
+            for (let i = 1; i <= max3; i++) {
+                list3.push('.');
+                output3.textContent = list3.join('');
+                rangeInput3.value = max3;
+            }
+            for (let i = 1; i <= max4; i++) {
+                list4.push('.');
+                output4.textContent = list4.join('');
+                rangeInput4.value = max4;
+            }
+            for (let i = 1; i <= max5; i++) {
+                list5.push('.');
+                output5.textContent = list5.join('');
+                rangeInput5.value = max5;
+            }
+            for (let i = 1; i <= max6; i++) {
+                list6.push('.');
+                output6.textContent = list6.join('');
+                rangeInput6.value = max6;
+            }
+        }
+
+        random();
+
+
+        rangeInput1.addEventListener('input', () => {
+            if (rangeInput1.value < list1.length) {
+                let dif = list1.length - rangeInput1.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput1.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output1.textContent = list1.join('');
+        });
+        rangeInput2.addEventListener('input', () => {
+            if (rangeInput2.value < list1.length) {
+                let dif = list1.length - rangeInput2.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput2.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output2.textContent = list1.join('');
+        });
+        rangeInput3.addEventListener('input', () => {
+            if (rangeInput3.value < list1.length) {
+                let dif = list1.length - rangeInput3.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput3.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output3.textContent = list1.join('');
+        });
+        rangeInput4.addEventListener('input', () => {
+            if (rangeInput4.value < list1.length) {
+                let dif = list1.length - rangeInput4.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput4.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output4.textContent = list1.join('');
+        });
+        rangeInput5.addEventListener('input', () => {
+            if (rangeInput5.value < list1.length) {
+                let dif = list1.length - rangeInput5.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput5.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output5.textContent = list1.join('');
+        });
+        rangeInput6.addEventListener('input', () => {
+            if (rangeInput6.value < list1.length) {
+                let dif = list1.length - rangeInput6.value;
+                for (let i = 1; i <= dif; i++) {
+                    list1.pop();
+                }
+            } else {
+                let dif = rangeInput6.value - list1.length;
+                for (let i = 1; i <= dif; i++) {
+                    list1.push('.');
+                }
+            }
+            output6.textContent = list1.join('');
+        });
+
+
+
+        function load() {
+            output1.textContent = list1.join('');
+        }
+
+        window.addEventListener('load', load);
+    </script>
+</body>
+
+</html>
