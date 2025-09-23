@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            padding: 25px;
+        }
+
+        textarea {
+            field-sizing: content;
+            display: block;
+            /* Ensures each textarea is on its own line */
+            margin-bottom: 10px;
+            /* Adds space between textareas */
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            /* Makes sliders full width */
+            margin-bottom: 10px;
+            /* Adds space between sliders */
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="output1"></textarea>
+    <textarea id="output2"></textarea>
+    <textarea id="output3"></textarea>
+    <textarea id="output4"></textarea>
+    <textarea id="output5"></textarea>
+    <textarea id="output6"></textarea>
+
+    <div class="controls">
+        <input type="range" id='rangeInput1' min="0" max="100" value="0">
+        <input type="range" id='rangeInput2' min="0" max="100" value="0">
+        <input type="range" id='rangeInput3' min="0" max="100" value="0">
+        <input type="range" id='rangeInput4' min="0" max="100" value="0">
+        <input type="range" id='rangeInput5' min="0" max="100" value="0">
+        <input type="range" id='rangeInput6' min="0" max="100" value="0">
+    </div>
+    <script defer>
+        const rangeInputs = document.querySelectorAll("input[type='range']");
+        const textAreas = document.querySelectorAll("textarea");
+
+        const lists = [];
+
+        function updateListAndOutput(index, value) {
+            const currentList = lists[index];
+            const difference = value - currentList.length;
+
+            if (difference > 0) {
+                for (let i = 0; i < difference; i++) {
+                    currentList.push('.');
+                }
+            } else if (difference < 0) {
+                for (let i = 0; i > difference; i--) {
+                    currentList.pop();
+                }
+            }
+            textAreas[index].textContent = currentList.join('');
+        }
+
+        function random() {
+            for (let i = 0; i < rangeInputs.length; i++) {
+                const max = Math.round(Math.random() * 100);
+                const newList = [];
+                for (let j = 0; j < max; j++) {
+                    newList.push('.');
+                }
+                lists[i] = newList;
+                textAreas[i].textContent = lists[i].join('');
+                rangeInputs[i].value = max;
+            }
+        }
+
+        // Attach a single event listener to each range input
+        rangeInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                updateListAndOutput(index, input.value);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            random();
+        });
+    </script>
+</body>
+
+</html>
