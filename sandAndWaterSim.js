@@ -9,181 +9,162 @@ const CONSOLE_WIDTH = 80;
 const CONSOLE_HEIGHT = 40;
 
 function createScene(width, height, fill = ".") {
-  let scene = [];
-  for (let y = 0; y < height; y++) {
-    let row = [];
-    for (let x = 0; x < width; x++) {
-      row.push(fill);
+    let scene = [];
+    for (let y = 0; y < height; y++) {
+        let row = [];
+        for (let x = 0; x < width; x++) {
+            row.push(fill);
+        }
+        scene.push(row);
     }
-    scene.push(row);
-  }
-  return scene;
+    return scene;
 }
 
 function drawScene(scene) {
-  // Clear the console and redraw the entire scene
-  console.clear();
-  let output = "";
-  for (let row of scene) {
-    output += row.join("");
-    output += "\n";
-  }
-  console.log(output);
+    // Clear the console and redraw the entire scene
+    console.clear();
+    let output = "";
+    for (let row of scene) {
+        output += row.join("");
+        output += "\n";
+    }
+    console.log(output);
 }
 
 function updateScene(scene, width, height) {
-  for (let y = height - 2; y >= 0; y--) {
-    for (let x = 0; x < width; x++) {
-      let cell = scene[y][x];
-      if (cell === "o") updateSand(scene, x, y);
-      else if (cell === "~") updateWater(scene, x, y);
+    for (let y = height - 2; y >= 0; y--) {
+        for (let x = 0; x < width; x++) {
+            let cell = scene[y][x];
+            if (cell === "o") updateSand(scene, x, y);
+            else if (cell === "~") updateWater(scene, x, y);
+        }
     }
-  }
 }
 
 function updateSand(scene, x, y) {
-  if (y + 1 >= height) return;
-  if (scene[y + 1][x] === ".") {
-    scene[y + 1][x] = "o";
-    scene[y][x] = ".";
-  } else if (scene[y + 1][x] === "~") {
-    scene[y + 1][x] = "o";
-    scene[y][x] = "~";
-  } else {
-    let options = [];
-    if (x > 0 && (scene[y + 1][x - 1] === "." || scene[y + 1][x - 1] === "~")) options.push(-1);
-    if (x < width - 1 && (scene[y + 1][x + 1] === "." || scene[y + 1][x + 1] === "~")) options.push(1);
-    if (options.length > 0) {
-      let dx = options[Math.floor(Math.random() * options.length)];
-      if (scene[y + 1][x + dx] === "~") {
-        scene[y + 1][x + dx] = "o";
-        scene[y][x] = "~";
-      } else {
-        scene[y + 1][x + dx] = "o";
+    if (y + 1 >= height) return;
+    if (scene[y + 1][x] === ".") {
+        scene[y + 1][x] = "o";
         scene[y][x] = ".";
-      }
+    } else if (scene[y + 1][x] === "~") {
+        scene[y + 1][x] = "o";
+        scene[y][x] = "~";
+    } else {
+        let options = [];
+        if (x > 0 && (scene[y + 1][x - 1] === "." || scene[y + 1][x - 1] === "~")) options.push(-1);
+        if (x < width - 1 && (scene[y + 1][x + 1] === "." || scene[y + 1][x + 1] === "~")) options.push(1);
+        if (options.length > 0) {
+            let dx = options[Math.floor(Math.random() * options.length)];
+            if (scene[y + 1][x + dx] === "~") {
+                scene[y + 1][x + dx] = "o";
+                scene[y][x] = "~";
+            } else {
+                scene[y + 1][x + dx] = "o";
+                scene[y][x] = ".";
+            }
+        }
     }
-  }
 }
 
 function updateWater(scene, x, y) {
-  if (y + 1 >= height) return;
-  if (scene[y + 1][x] === ".") {
-    scene[y + 1][x] = "~";
-    scene[y][x] = ".";
-  } else {
-    let options = [];
-    if (y + 1 < height && x > 0 && scene[y + 1][x - 1] === ".") options.push([-1, 1]);
-    if (y + 1 < height && x < width - 1 && scene[y + 1][x + 1] === ".") options.push([1, 1]);
-    if (x > 0 && scene[y][x - 1] === ".") options.push([-1, 0]);
-    if (x < width - 1 && scene[y][x + 1] === ".") options.push([1, 0]);
-    if (options.length > 0) {
-      let [dx, dy] = options[Math.floor(Math.random() * options.length)];
-      scene[y + dy][x + dx] = "~";
-      scene[y][x] = ".";
+    if (y + 1 >= height) return;
+    if (scene[y + 1][x] === ".") {
+        scene[y + 1][x] = "~";
+        scene[y][x] = ".";
+    } else {
+        let options = [];
+        if (y + 1 < height && x > 0 && scene[y + 1][x - 1] === ".") options.push([-1, 1]);
+        if (y + 1 < height && x < width - 1 && scene[y + 1][x + 1] === ".") options.push([1, 1]);
+        if (x > 0 && scene[y][x - 1] === ".") options.push([-1, 0]);
+        if (x < width - 1 && scene[y][x + 1] === ".") options.push([1, 0]);
+        if (options.length > 0) {
+            let [dx, dy] = options[Math.floor(Math.random() * options.length)];
+            scene[y + dy][x + dx] = "~";
+            scene[y][x] = ".";
+        }
     }
-  }
 }
 
 function loop() {
-  if (!running) return;
-  updateScene(scene, width, height);
-  drawScene(scene);
-  loopId = setTimeout(loop, 80);
+    if (!running) return;
+    updateScene(scene, width, height);
+    drawScene(scene);
+    loopId = setTimeout(loop, 80);
 }
 
 function start() {
-  if (!running) {
-    running = true;
-    console.log("Simulation started.");
-    loop();
-  }
+    if (!running) {
+        running = true;
+        console.log("Simulation started.");
+        loop();
+    }
+}
+
+// New pause function
+function pause() {
+    if (running) {
+        running = false;
+        clearTimeout(loopId);
+        console.log("Simulation paused.");
+    }
 }
 
 function reset() {
-  running = false;
-  clearTimeout(loopId);
-  initScene();
-  console.log("Simulation reset. Call start() to begin again.");
+    running = false;
+    clearTimeout(loopId);
+    initScene();
+    console.log("Simulation reset. Call start() to begin again.");
 }
 
 function initScene() {
-  width = CONSOLE_WIDTH;
-  height = CONSOLE_HEIGHT;
-  scene = createScene(width, height);
-  drawScene(scene);
+    width = CONSOLE_WIDTH;
+    height = CONSOLE_HEIGHT;
+    scene = createScene(width, height);
+    drawScene(scene);
 }
 
 // User interaction functions exposed to the console
 function sand() {
-  paintType = "o";
-  console.log("Painting with sand ('o'). Use `place(x, y)`.");
+    paintType = "o";
+    console.log("Painting with sand ('o'). Use `place(x, y)`.");
 }
 
 function water() {
-  paintType = "~";
-  console.log("Painting with water ('~'). Use `place(x, y)`.");
+    paintType = "~";
+    console.log("Painting with water ('~'). Use `place(x, y)`.");
 }
 
 function place(x, y) {
-  if (x >= 0 && x < width && y >= 0 && y < height) {
-    scene[y][x] = paintType;
+    if (x >= 0 && x < width && y >= 0 && y < height) {
+        scene[y][x] = paintType;
+        drawScene(scene);
+    } else {
+        console.log(`Coordinates out of bounds. Must be between (0,0) and (${width - 1},${height - 1}).`);
+    }
+}
+
+// Modified draw function to use the current brush
+function draw(xStart, xEnd, yStart, yEnd) {
+    // Ensure the coordinates are within the scene bounds
+    const x1 = Math.max(0, xStart);
+    const x2 = Math.min(width - 1, xEnd);
+    const y1 = Math.max(0, yStart);
+    const y2 = Math.min(height - 1, yEnd);
+
+    for (let y = y1; y <= y2; y++) {
+        for (let x = x1; x <= x2; x++) {
+            scene[y][x] = paintType;
+        }
+    }
     drawScene(scene);
-  } else {
-    console.log(`Coordinates out of bounds. Must be between (0,0) and (${width - 1},${height - 1}).`);
-  }
+    console.log(`Drew a rectangle of ${paintType} from (${x1},${y1}) to (${x2},${y2}).`);
 }
 
 // Initial setup
 initScene();
 console.log("Welcome to the console falling sand simulation!");
 console.log("Type `start()` to begin the simulation.");
+console.log("Type `pause()` to pause it.");
 console.log("To add elements, use `sand()` or `water()` to select, then `place(x, y)`.");
-console.log("Other commands: `reset()`, `draw(xStart,xEnd,StartRow` <= only does 10 rows .");
-
-
-function draw(a,b,c){
-var output = '';
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-c++;
-for(let i = a; i < b; i++){
-  output += `place(${i},${c});`;
-}
-
-console.log(output);
-
-}
+console.log("To draw a rectangle, use `draw(xStart, xEnd, yStart, yEnd)`.");
+console.log("Other commands: `reset()`.");
