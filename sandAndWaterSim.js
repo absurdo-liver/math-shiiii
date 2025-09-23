@@ -3,6 +3,7 @@ let scene;
 let running = false;
 let loopId = null;
 let paintType = "o"; // sand by default
+var speed = 80;
 
 // Set console dimensions. You can adjust these values.
 const CONSOLE_WIDTH = 80;
@@ -89,7 +90,7 @@ function loop() {
     if (!running) return;
     updateScene(scene, width, height);
     drawScene(scene);
-    loopId = setTimeout(loop, 80);
+    loopId = setTimeout(loop, speed);
 }
 
 function start() {
@@ -168,3 +169,4 @@ console.log("Type `pause()` to pause it.");
 console.log("To add elements, use `sand()` or `water()` to select, then `place(x, y)`.");
 console.log("To draw a rectangle, use `draw(xStart, xEnd, yStart, yEnd)`.");
 console.log("Other commands: `reset()`.");
+
