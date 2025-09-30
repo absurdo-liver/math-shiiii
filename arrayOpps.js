@@ -54,3 +54,13 @@
 // Instance propereties:
 // length : returns length of an array, aka: how many items does it contain
 // [Symbol.unscopables] : type, unwritable, unenumerable, configuarble
+
+
+
+
+//funny funny mwehehehehe 
+let output = [];
+for (let i = 1; i <= 118; i++){
+output.push('start(' + i + ')');
+}
+console.log(output.join('\n'));
