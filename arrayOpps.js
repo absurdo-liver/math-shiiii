@@ -2,10 +2,10 @@
 // Array() : create new array | new Array()
 
 // Static methods:
-// from() : create new shallow copied array instance, has parameters: Array.from(items) | Array.from("foo") => "f","o", "o"
-// fromAsync() : from() but async
-// isArray(): returns true if parameter is an array, has parameters: object to pass
-// of() : create new array from variable number of arguments, has parameters: arguments
+// Array.from() : create new shallow copied array instance, has parameters: Array.from(items) | Array.from("foo") => "f","o", "o"
+// Array.fromAsync() : from() but async
+// Array.isArray(): returns true if parameter is an array, has parameters: object to pass
+// Array.of() : create new array from variable number of arguments, has parameters: arguments
 
 // Static propereties:
 // [Symbol.species] // don't use
@@ -15,7 +15,7 @@
 // concat() : merge two or more arrays, does not modify, returns new array, has parameters: arrays
 // copyWithin() : shallow copies part of an array w/o modifying its length, has parameters: target, start, end | copyWithin(target, start, end)
 // entries() : returns new array iterator object, contains value pairs for each index, lacks parameters | Array.entries() => 0 "item@index0" , 1 "item@index1"
-// every() : retuns flase if one item in array doesn't satisfy condition, has parameters: callbackFn, thisArg | function{return elem >= 10} Array.every(function)
+// every() : retuns false if one item in array doesn't satisfy condition, has parameters: callbackFn, thisArg | function{return elem >= 10} Array.every(function)
 // fill() : change all items withing a range to a static value, return modified array, has parameters: value, start, end | fill(value, start, end)
 // filter() : creates shallow copy of portion of given array filtered to contain just the items that satisfy parameters, has parameters: callbackFn, thisArg | filter(callbackFn, thisArg)
 // find() : return first item in array that satisfies parameters, no values satisfy => undefined, has parameters: find(callbackFn, thisArg)
@@ -25,7 +25,7 @@
 // flat() : returns array with all sub-array items concatenated into it recursively up until specified depth, has parameters: depth
 // flatMap() : same as flat(), instead returns array formed by apply callbackFn then flatening
 // forEach() : executes provided function once for each item in array, has parameters: function
-// includes() : returns true if array contain parameters, else returns false, has parameters: item to chack for
+// includes() : returns true if array contain parameters, else returns false, has parameters: item to check for
 // indexOf() : same as includes(), instead returns index value of item, else returns -1
 // join() : returns string of all items, seperated by provided spacer, has parameters: spacer
 // keys() : returns new array iterator object containing the keys for each index in array
@@ -54,4 +54,3 @@
 // Instance propereties:
 // length : returns length of an array, aka: how many items does it contain
 // [Symbol.unscopables] : type, unwritable, unenumerable, configuarble
-
