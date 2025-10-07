@@ -11,11 +11,13 @@
 	<meta charset="utf-8">
 	<!-- style tag | CSS -->
 	<style>
-	body {
+  /* the following defined the styles for... */
+  /* for body of page, can be overridden by other style rules (<-- applies to all)*/
+  body {
 		font-family: monospace;
 		text-align: right;
 	}
-
+  /* for <p> element(s) */
 	p {
 		text-align: left;
 		position: absolute;
@@ -25,7 +27,7 @@
 		font-size: 200%;
 		width: 11em;
 	}
-
+  /* for ".buttonsDivClass" class */
 	.buttonsDivClass {
 		display: block;
 		position: absolute;
@@ -38,7 +40,7 @@
 		margin-right: 2.5vw;
 		top: 25%;
 	}
-
+  /* for <button> element(s) with class: ".buttonsDivClass" or that have a parent with the same class*/
 	.buttonsDivClass button {
 		font-family: monospace;
 		font-style: italic;
@@ -52,7 +54,7 @@
 		border: 0px;
 		transition: ease-in-out 0.25s;
 	}
-
+  /* for hover behaviour on <button> element(s) with class: ".buttonsDivClass" or that have a parent with the same class*/
 	.buttonsDivClass button:hover {
 		transition: ease-in-out 0.25s;
 		background-color: rgba(255, 255, 255, 1);
