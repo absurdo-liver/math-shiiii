@@ -1,184 +1,193 @@
+<!-- Author: Olivier LeGallee | latest update: Oct. 7th 2025 10:40am -->
+<!-- Uploaded to GitHub repository: "math-shiiii", by user: "absurdo-liver" -->
+<!-- absurdo-liver => absurdoliver alternative account | managed by the author -->
+<!-- start of index.html file | CSS & JavaScript are included in this page -->
 <html>
-
+<!-- head tag -->
 <head>
-    <title>redirecting to...</title>
-    <meta charset="utf-8">
-    <style>
-        body {
-            font-family: monospace;
-            text-align: right;
-        }
+	<!-- title is updated dynamically by Javascript later in the file -->
+	<title>redirecting to...</title>
+	<!-- meta tag | ensure browser uses the correct character encoding -->
+	<meta charset="utf-8">
+	<!-- style tag | CSS -->
+	<style>
+	body {
+		font-family: monospace;
+		text-align: right;
+	}
 
-        p {
-            text-align: left;
-            position: absolute;
-            margin-left: 5vw;
-            margin-right: 5vw;
-            margin-top: 5vh;
-            font-size: 200%;
-            width: 11em;
-        }
+	p {
+		text-align: left;
+		position: absolute;
+		margin-left: 5vw;
+		margin-right: 5vw;
+		margin-top: 5vh;
+		font-size: 200%;
+		width: 11em;
+	}
 
-        .buttonsDivClass {
-            display: block;
-            position: absolute;
-            width: auto;
-            padding: 10px;
-            margin: 0 auto;
-            background-color: rgba(0, 0, 0, 0.125);
-            border-radius: 10px;
-            margin-left: 2.5vw;
-            margin-right: 2.5vw;
-            top: 25%;
-        }
+	.buttonsDivClass {
+		display: block;
+		position: absolute;
+		width: auto;
+		padding: 10px;
+		margin: 0 auto;
+		background-color: rgba(0, 0, 0, 0.125);
+		border-radius: 10px;
+		margin-left: 2.5vw;
+		margin-right: 2.5vw;
+		top: 25%;
+	}
 
-        .buttonsDivClass button {
-            font-family: monospace;
-            font-style: italic;
-            margin: 20px;
-            width: 25vw;
-            min-width: min-content;
-            height: 5vh;
-            min-height: min-content;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            border: 0px;
-            transition: ease-in-out 0.25s;
-        }
+	.buttonsDivClass button {
+		font-family: monospace;
+		font-style: italic;
+		margin: 20px;
+		width: 25vw;
+		min-width: min-content;
+		height: 5vh;
+		min-height: min-content;
+		background-color: rgba(255, 255, 255, 0.5);
+		border-radius: 10px;
+		border: 0px;
+		transition: ease-in-out 0.25s;
+	}
 
-        .buttonsDivClass button:hover {
-            transition: ease-in-out 0.25s;
-            background-color: rgba(255, 255, 255, 1);
-        }
-    </style>
-
+	.buttonsDivClass button:hover {
+		transition: ease-in-out 0.25s;
+		background-color: rgba(255, 255, 255, 1);
+	}
+	</style>
 </head>
-
+<!-- body tag | contains the page content -->
 <body>
-    <p id="pageHeading">redirecting to...</p>
-    <div id='buttonsDiv' class="buttonsDivClass">
-        <button onclick='send(1)'>sand & water sim</button>
-        <button onclick='send(2)'>random bar graphs 1</button>
-        <button onclick='send(3)'>random bar graphs 2</button>
-        <button onclick='send(4)'>random number fuckassery</button>
-        <button onclick='send(5)'>simple scene & draw</button>
-        <button onclick='send(6)'>tax calculator online</button>
-        <button onclick='send(7)'>does nothing</button>
-    </div>
-    <script>
-        // assign consts
-        const pageHeading = document.getElementById('pageHeading');
+	<!-- header text | not to be confused with head tag -->
+	<p id="pageHeading">redirecting to...</p>
+	<!-- div containing buttons | class for CSS styling -->
+	<div id='buttonsDiv' class="buttonsDivClass">
+		<button onclick='send(1)'>sand & water sim</button>
+		<button onclick='send(2)'>random bar graphs 1</button>
+		<button onclick='send(3)'>random bar graphs 2</button>
+		<button onclick='send(4)'>random number fuckassery</button>
+		<button onclick='send(5)'>simple scene & draw</button>
+		<button onclick='send(6)'>tax calculator online</button>
+		<button onclick='send(7)'>does nothing</button>
+	</div>
+	<!-- script tag | JavaScript -->
+	<script>
+	// assign consts
+	const pageHeading = document.getElementById('pageHeading');
 
-        // create interval & timeout vars to be used
-        var pageTextsAnimationInterval;
-        var tempTimeout;
+	// create interval & timeout vars to be used
+	var pageTextsAnimationInterval;
+	var tempTimeout;
 
-        // interval & timeout timing (ms)
-        var msTimeoutTimer = 1000;
-        var msIntervalTimer = 500;
+	// interval & timeout timing (ms)
+	var msTimeoutTimer = 1000;
+	var msIntervalTimer = 500;
 
-        // handle redirecting & calling animation functions (buttons call this function)
-        function send(n) {
-            // repetitive "if" but does the job... this page won't suffer much, it doesn't do much anyways
-            if (!Number.isInteger(n)) {
-                // if the parameter isn't an integer, assume it's a link and redirect the user
-                // only accessible through webpage console
-                window.location.href = n;
-            }
+	// handle redirecting & calling animation functions (buttons call this function)
+	function send(n) {
+		// repetitive "if" but does the job... this page won't suffer much, it doesn't do much anyways
+		if (!Number.isInteger(n)) {
+			// if the parameter isn't an integer, assume it's a link and redirect the user
+			// only accessible through webpage console
+			window.location.href = n;
+		}
 
-            // call animation stop function and redirect after timeout
-            // timing defined at top of file
-            if (n === 1) {
-                pageTextsAnimationStop('sand & water sim');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/waterAndSandSimHTML/index.html';
-                }, msTimeoutTimer);
-            }
-            if (n === 2) {
-                pageTextsAnimationStop('random bar graphs 1');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs.html';
-                }, msTimeoutTimer);
-            }
-            if (n === 3) {
-                pageTextsAnimationStop('random bar graphs 2');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs2.html';
-                }, msTimeoutTimer);
-            }
-            if (n === 4) {
-                pageTextsAnimationStop('random number fuckassery');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/randomNumFindFractOrReload.html';
-                }, msTimeoutTimer);
+		// call animation stop function and redirect after timeout
+		// timing defined at top of file
+		if (n === 1) {
+			pageTextsAnimationStop('sand & water sim');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/math-shiiii/waterAndSandSimHTML/index.html';
+			}, msTimeoutTimer);
+		}
+		if (n === 2) {
+			pageTextsAnimationStop('random bar graphs 1');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs.html';
+			}, msTimeoutTimer);
+		}
+		if (n === 3) {
+			pageTextsAnimationStop('random bar graphs 2');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs2.html';
+			}, msTimeoutTimer);
+		}
+		if (n === 4) {
+			pageTextsAnimationStop('random number fuckassery');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/math-shiiii/randomNumFindFractOrReload.html';
+			}, msTimeoutTimer);
 
-            }
-            if (n === 5) {
-                pageTextsAnimationStop('simple scene & draw');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/simple-scene-draw/index.html';
-                }, msTimeoutTimer);
-            }
-            if (n === 6) {
-                pageTextsAnimationStop('tax calculator online');
-                tempTimeout = setTimeout(() => {
-                    window.location.href = 'https://absurdo-liver.github.io/taxCalculatorOnline/';
-                }, msTimeoutTimer);
-            }
+		}
+		if (n === 5) {
+			pageTextsAnimationStop('simple scene & draw');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/simple-scene-draw/index.html';
+			}, msTimeoutTimer);
+		}
+		if (n === 6) {
+			pageTextsAnimationStop('tax calculator online');
+			tempTimeout = setTimeout(() => {
+				window.location.href = 'https://absurdo-liver.github.io/taxCalculatorOnline/';
+			}, msTimeoutTimer);
+		}
 
-            // "does nothing" button, only here for testing purposes initially...
-            // temporarily stops animation but restarts it after timeout
-            if (n === 7) {
-                pageTextsAnimationStop('nowhere');
-                tempTimeout = setTimeout(() => {
-                    pageTextsAnimation();
-                }, msTimeoutTimer);
-            }
-        }
+		// "does nothing" button, only here for testing purposes initially...
+		// temporarily stops animation but restarts it after timeout
+		if (n === 7) {
+			pageTextsAnimationStop('nowhere');
+			tempTimeout = setTimeout(() => {
+				pageTextsAnimation();
+			}, msTimeoutTimer);
+		}
+	}
 
-        // stop title & header text animation and displays redirect location (also clears any timeouts)
-        function pageTextsAnimationStop(content) {
-            clearInterval(pageTextsAnimationInterval);
-            document.title = 'redirecting to ' + content;
-            pageHeading.textContent = 'redirecting to ' + content;
-            if (tempTimeout) {
-                clearTimeout(tempTimeout);
-            }
-        }
+	// stop title & header text animation and displays redirect location (also clears any timeouts)
+	function pageTextsAnimationStop(content) {
+		clearInterval(pageTextsAnimationInterval);
+		document.title = 'redirecting to ' + content;
+		pageHeading.textContent = 'redirecting to ' + content;
+		if (tempTimeout) {
+			clearTimeout(tempTimeout);
+		}
+	}
 
-        // start and handle title & text animation
-        // timing defined at top of file
-        function pageTextsAnimation() {
-            let animationFrame = 0;
-            pageTextsAnimationInterval = setInterval(() => {
-                animationFrame++
-                if (animationFrame === 1) {
-                    let content = 'redirecting to.';
-                    document.title = content;
-                    pageHeading.textContent = content;
-                }
-                if (animationFrame === 2) {
-                    let content = 'redirecting to..';
-                    document.title = content;
-                    pageHeading.textContent = content;
-                }
-                if (animationFrame === 3) {
-                    let content = 'redirecting to...';
-                    document.title = content;
-                    pageHeading.textContent = content;
-                    animationFrame = 0;
-                }
-            }, msIntervalTimer);
-        }
+	// start and handle title & text animation
+	// timing defined at top of file
+	function pageTextsAnimation() {
+		let animationFrame = 0;
+		pageTextsAnimationInterval = setInterval(() => {
+			animationFrame++
+			if (animationFrame === 1) {
+				let content = 'redirecting to.';
+				document.title = content;
+				pageHeading.textContent = content;
+			}
+			if (animationFrame === 2) {
+				let content = 'redirecting to..';
+				document.title = content;
+				pageHeading.textContent = content;
+			}
+			if (animationFrame === 3) {
+				let content = 'redirecting to...';
+				document.title = content;
+				pageHeading.textContent = content;
+				animationFrame = 0;
+			}
+		}, msIntervalTimer);
+	}
 
-        // run only once DOM content is loaded, handle calling functions once page is loaded
-        function load() {
-            pageTextsAnimation();
-        }
+	// run only once DOM content is loaded, handle calling functions once page is loaded
+	function load() {
+		pageTextsAnimation();
+	}
 
-        // call load function once DOM content is loaded
-        window.addEventListener("DOMContentLoaded", load);
-    </script>
+	// call load function once DOM content is loaded
+	window.addEventListener("DOMContentLoaded", load);
+	</script>
 </body>
-
 </html>
+<!-- end of index.html file -->
