@@ -1,34 +1,57 @@
 <html>
+
 <head>
-<title>redirecting...</title>
+    <title id='pageTitle'>redirecting...</title>
+    <meta charset="utf-8">
 </head>
+
 <body>
-<p>redirecting...</p>
-  <button onclick='send1()'>sim</button>
-  <button onclick='send2()'>random bar graphs 1</button>
-  <button onclick='send3()'>random bar graphs 2</button>
-  <button onclick='send4()'>random number fuckassery</button>
-  <button onclick='send5()'>simple scene & draw</button>
-  <button onclick='send6()'>tax calculator online</button>
-<script>
-  function send1(){
-    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/waterAndSandSimHTML/index.html';
-  }
-  function send2(){
-    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs.html';
-  }
-  function send3(){
-    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs2.html';
-  }
-  function send4(){
-    window.location.href = 'https://absurdo-liver.github.io/math-shiiii/randomNumFindFractOrReload.html';
-  }
-  function send5(){
-    window.location.href = 'https://absurdo-liver.github.io/simple-scene-draw/index.html';
-  }
-  function send6(){
-    window.location.href = 'https://absurdo-liver.github.io/taxCalculatorOnline/';
-  }
-</script>
+    <p>redirecting...</p>
+    <button onclick='send(1)'>sim</button>
+    <button onclick='send(2)'>random bar graphs 1</button>
+    <button onclick='send(3)'>random bar graphs 2</button>
+    <button onclick='send(4)'>random number fuckassery</button>
+    <button onclick='send(5)'>simple scene & draw</button>
+    <button onclick='send(6)'>tax calculator online</button>
+    <script>
+        const pageTitle = document.getElementById('pageTitle');
+
+
+
+
+        function send(n) {
+            if (!Number.isInteger(n)) {
+                window.location.href = n
+            }
+            if (n === 1) {
+                window.location.href = 'https://absurdo-liver.github.io/math-shiiii/waterAndSandSimHTML/index.html';
+            }
+            if (n === 2) {
+                window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs.html';
+            }
+            if (n === 3) {
+                window.location.href = 'https://absurdo-liver.github.io/math-shiiii/rndbutwithbargraphs2.html';
+            }
+            if (n === 4) {
+                window.location.href = 'https://absurdo-liver.github.io/math-shiiii/randomNumFindFractOrReload.html';
+            }
+            if (n === 5) {
+                window.location.href = 'https://absurdo-liver.github.io/simple-scene-draw/index.html';
+            }
+            if (n === 6) {
+                window.location.href = 'https://absurdo-liver.github.io/taxCalculatorOnline/';
+            }
+        }
+
+
+
+
+        function load() {
+            //does nothing for now
+        }
+
+        window.addEventListener("DOMContentLoaded", load);
+    </script>
 </body>
+
 </html>
