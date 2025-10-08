@@ -1,4 +1,4 @@
-// create varibales to be used later
+// create variables to be used later
 let width, height;
 let scene;
 let running = false;
