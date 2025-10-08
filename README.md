@@ -40,7 +40,9 @@
 <details>
 <summary>waterAndSandSimHTML | <a href='https://github.com/absurdo-liver/math-shiiii/tree/main/waterAndSandSimHTML'>folder</a></summary>
 <ul>
-<li><a href=''></a></li>
+<li><a href='https://github.com/absurdo-liver/math-shiiii/blob/main/waterAndSandSimHTML/index.html'>index.html</a></li>
+<li><a href='https://github.com/absurdo-liver/math-shiiii/blob/main/waterAndSandSimHTML/script.js'>script.js</a></li>
+<li><a href='https://github.com/absurdo-liver/math-shiiii/blob/main/waterAndSandSimHTML/styles.css'>styles.css</a></li>
 </ul>
 </details>
 
