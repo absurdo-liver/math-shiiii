@@ -1,21 +1,25 @@
+// create varibales to be used later
 let width, height;
 let scene;
 let running = false;
 let loopId = null;
 let paintType = "o"; // sand by default
+
+// set constants to refer to HTML elements
 const outputField = document.getElementById('outputField');
 const inputField = document.getElementById('inputField');
 const rangeSpeed = document.getElementById('rangeSpeed');
 var speed = 80;
 
-// Set console dimensions. You can adjust these values.
+// console dimensions
 const CONSOLE_WIDTH = 80;
 const CONSOLE_HEIGHT = 40;
 
-// Command history implementation
+// command history implementation
 const commandHistory = [];
 let historyIndex = -1;
 
+// create scene
 function createScene(width, height, fill = ".") {
     let scene = [];
     for (let y = 0; y < height; y++) {
@@ -28,6 +32,7 @@ function createScene(width, height, fill = ".") {
     return scene;
 }
 
+// draw scene to console area
 function drawScene(scene) {
     let output = "";
     for (let row of scene) {
@@ -37,6 +42,7 @@ function drawScene(scene) {
     outputField.textContent = output;
 }
 
+// update scene
 function updateScene(scene, width, height) {
     let newScene = createScene(width, height, ".");
 
@@ -61,6 +67,7 @@ function updateScene(scene, width, height) {
     return newScene;
 }
 
+// sand movement logic
 function updateSand(scene, newScene, x, y) {
     if (y + 1 < height && (scene[y + 1][x] === "." || scene[y + 1][x] === "~")) {
         // Prioritize falling straight down
@@ -94,6 +101,7 @@ function updateSand(scene, newScene, x, y) {
     }
 }
 
+// water movement logic
 function updateWater(scene, newScene, x, y) {
     // Check below
     if (y + 1 < height && scene[y + 1][x] === "." && newScene[y + 1][x] === ".") {
@@ -134,6 +142,7 @@ function updateWater(scene, newScene, x, y) {
     }
 }
 
+// main game loop, executes all necessairy functions
 function loop() {
     if (!running) return;
     scene = updateScene(scene, width, height);
@@ -141,6 +150,7 @@ function loop() {
     loopId = setTimeout(loop, speed);
 }
 
+// starting function
 function start() {
     if (!running) {
         running = true;
@@ -149,6 +159,7 @@ function start() {
     }
 }
 
+// pausing function
 function pause() {
     if (running) {
         running = false;
@@ -157,6 +168,7 @@ function pause() {
     }
 }
 
+// reset function
 function reset() {
     running = false;
     clearTimeout(loopId);
@@ -164,6 +176,7 @@ function reset() {
     addOutput("Simulation reset. Call `start()` to begin again.");
 }
 
+// initialization function
 function initScene() {
     width = CONSOLE_WIDTH;
     height = CONSOLE_HEIGHT;
@@ -172,16 +185,19 @@ function initScene() {
     drawScene(scene);
 }
 
+// brush type for sand
 function sand() {
     paintType = "o";
     addOutput("Painting with sand ('o'). Use `place(x, y)`.");
 }
 
+// brush type for water
 function water() {
     paintType = "~";
     addOutput("Painting with water ('~'). Use `place(x, y)`.");
 }
 
+// place one unit of current brush type at coordinates
 function place(x, y) {
     x = parseInt(x);
     y = parseInt(y);
@@ -194,6 +210,7 @@ function place(x, y) {
     }
 }
 
+// place a rectangle full of units of current brush type staring and ending at coordinates
 function draw(x1, y1, x2, y2) {
     const xStart = Math.max(0, Math.min(parseInt(x1), parseInt(x2)));
     const xEnd = Math.min(width - 1, Math.max(parseInt(x1), parseInt(x2)));
@@ -209,6 +226,7 @@ function draw(x1, y1, x2, y2) {
     addOutput(`Drew a rectangle of ${paintType} from (${xStart},${yStart}) to (${xEnd},${yEnd}).`);
 }
 
+// help function for user
 function help() {
     const helpText = `
 Available commands:
@@ -224,11 +242,13 @@ Available commands:
     addOutput(helpText);
 }
 
+// function to handle sending messages to console area for user
 function addOutput(message) {
     outputField.textContent += "\n> " + message;
     outputField.scrollTop = outputField.scrollHeight;
 }
 
+// main input handler
 function handleInput(event) {
     if (event.key === 'Enter') {
         const command = inputField.value.trim();
@@ -261,12 +281,14 @@ function handleInput(event) {
     }
 }
 
+// event listener handling
 inputField.removeEventListener('keypress', handleInput);
 inputField.addEventListener('keydown', handleInput);
 rangeSpeed.addEventListener('input', () => {
   speed = rangeSpeed.value;
 });
 
+// initialization
 initScene();
 addOutput("Welcome to the console falling sand simulation!");
 addOutput("Type `help()` for a list of commands.");
