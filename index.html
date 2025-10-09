@@ -1,4 +1,4 @@
-<!-- Author: Olivier LeGallee | latest update: Oct. 7th 2025 11:58am -->
+<!-- Author: Olivier LeGallee | latest update: Oct. 9th 2025 10:40am -->
 <!-- Uploaded to GitHub repository: "math-shiiii", by user: "absurdo-liver" -->
 <!-- absurdo-liver => absurd-oliver alternative account | managed by the author -->
 <!-- start of index.html file | CSS & JavaScript are included in this page -->
@@ -16,8 +16,12 @@
   body {
 		font-family: monospace;
 		text-align: right;
-		font-size: 25px;
 	}
+  /* for body container */
+  .bodyContainer{
+    width: 90vw;
+    height: 90vh;
+  }
   /* for <p> element(s) */
 	p {
 		text-align: left;
@@ -33,26 +37,28 @@
 		display: block;
 		position: absolute;
 		width: auto;
+    height: 70vh;
+    min-height: min-content;
 		padding: 10px;
 		margin: 0 auto;
 		background-color: rgba(0, 0, 0, 0.125);
 		border-radius: 10px;
 		margin-left: 2.5vw;
 		margin-right: 2.5vw;
-		top: 25%;
+    top: 20%;
 	}
   /* for <button> element(s) with class: ".buttonsDivClass" or that have a parent with the same class*/
 	.buttonsDivClass button {
-		font-size: 50px;
+    font-size: clamp(1rem, calc(2.8rem - 2vw), 2rem);
 		font-family: monospace;
 		font-style: italic;
 		margin: 20px;
-		width: 640px;
+		width: 25vw;
 		min-width: min-content;
-		height: 360px;
+		height: 15%;
 		min-height: min-content;
 		background-color: rgba(255, 255, 255, 0.5);
-		border-radius: 5vw;
+		border-radius: 10px;
 		border: 0px;
 		transition: ease-in-out 0.25s;
 	}
@@ -65,20 +71,23 @@
 </head>
 <!-- body tag | contains the page content -->
 <body>
-	<!-- header text | not to be confused with head tag -->
-	<p id="pageHeading">redirecting to...</p>
-	<!-- div containing buttons | class for CSS styling -->
-	<div id='buttonsDiv' class="buttonsDivClass">
-		<button onclick='send(1)'>sand & water sim</button>
-		<button onclick='send(2)'>random bar graphs 1</button>
-		<button onclick='send(3)'>random bar graphs 2</button>
-		<button onclick='send(4)'>random number fuckassery</button>
-		<button onclick='send(5)'>simple scene & draw</button>
-		<button onclick='send(6)'>tax calculator online</button>
-		<button onclick='send(7)'>does nothing</button>
-	</div>
-	<!-- footer tag | links to the repository in which this webpage's code is being stored -->
-	<footer><a href='https://github.com/absurdo-liver/math-shiiii'> hosted from github repository</a></footer>
+  <!-- div container | contains entire page content -->
+  <div class='bodyContainer'>
+	  <!-- header text | not to be confused with head tag -->
+	  <p id="pageHeading">redirecting to...</p>
+	  <!-- div containing buttons | class for CSS styling -->
+	  <div id='buttonsDiv' class="buttonsDivClass">
+		  <button onclick='send(1)'>sand & water sim</button>
+		  <button onclick='send(2)'>random bar graphs 1</button>
+		  <button onclick='send(3)'>random bar graphs 2</button>
+		  <button onclick='send(4)'>random number fuckassery</button>
+		  <button onclick='send(5)'>simple scene & draw</button>
+		  <button onclick='send(6)'>tax calculator online</button>
+		  <button onclick='send(7)'>does nothing</button>
+	  </div>
+	  <!-- footer tag | links to the repository in which this webpage's code is being stored -->
+	  <footer><a href='https://github.com/absurdo-liver/math-shiiii'> hosted from github repository</a></footer>
+  </div>
 	<!-- script tag | JavaScript -->
 	<script>
 	// assign consts
