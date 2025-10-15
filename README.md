@@ -5,7 +5,7 @@
 
 - [README.md](https://github.com/absurdo-liver/math-shiiii/blob/main/README.md) | this file
 
-- [index.html](https://github.com/absurdo-liver/math-shiiii/blob/main/index.html) | entry file for [this repositoriy's webpage](https://absurdo-liver.github.io/math-shiiii/)
+- [index.html](https://github.com/absurdo-liver/math-shiiii/blob/main/index.html) | entry file for [this repository's webpage](https://absurdo-liver.github.io/math-shiiii/)
 
 ---
 <details>
